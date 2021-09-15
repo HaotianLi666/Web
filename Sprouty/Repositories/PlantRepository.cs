@@ -8,7 +8,7 @@ namespace Sprouty.Repositories
 {
     public class PlantRepository : RepositoryBase<Plant>, IPlantRepository
     {
-        public PlantRepository(RepositoryContext context) : base(context) { }
+        public PlantRepository(MongoDbContext context) : base(context) { }
 
         public IEnumerable<Plant> GetAll()
         {

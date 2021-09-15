@@ -10,10 +10,10 @@ namespace Sprouty.Repositories
 {
     public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : BaseModel
     {
-        private RepositoryContext _context;
+        private MongoDbContext _context;
         private IMongoCollection<T> _collection { get; set; }
 
-        public RepositoryBase(RepositoryContext context)
+        public RepositoryBase(MongoDbContext context)
         {
             if (context == null)
                 return; // TODO : add logging
