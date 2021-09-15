@@ -12,13 +12,24 @@ namespace Sprouty.Repositories
 
         public IEnumerable<Plant> GetAll()
         {
-            // TODO : implement interface functions, see UML
             throw new NotImplementedException();
         }
 
         public Plant GetPlantById(string id)
         {
-            // TODO : implement interface functions, see UML
+            throw new NotImplementedException();
+        }
+        public void CreatePlant(Plant plant)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdatePlant(string id, Plant plant)
+        {
+            throw new NotImplementedException();
+        }
+        public void DeleteClient(string id)
+        {
             throw new NotImplementedException();
         }
     }

@@ -9,7 +9,7 @@ namespace Sprouty.Contracts
         IQueryable<T> FindAll();
         IQueryable<T> FindByCondition(Expression<Func<T, bool>> filter);
         void Create(T entity);
-        void Update(Expression<Func<T, bool>> expression, T entity);
+        void Update(Expression<Func<T, bool>> filter, T entity);
         void Delete(Expression<Func<T, bool>> filter);
     }
 }
