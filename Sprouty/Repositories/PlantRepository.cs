@@ -35,7 +35,7 @@ namespace Sprouty.Repositories
 
         public IEnumerable<Plant> GetPlantsByUserId(Guid userId)
         {
-            return FindByCondition(p => p.UserId == userId).ToList().Sort((x, y) => DateTime.Compare(x., y.Created));
+            return FindByCondition(p => p.UserId == userId).ToList();
         }
 
         public void CreatePlant(Plant plant)

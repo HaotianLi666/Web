@@ -25,25 +25,35 @@ namespace Sprouty.Repositories
 
         public IEnumerable<User> GetAllUsers()
         {
-            return FindAll().OrderBy(u=>u.Id).ToList();
+            return FindAll().OrderBy(u=>u.Id).ToList<User>();
         }
 
         public User GetUserById(string id)
         {
-            throw new NotImplementedException();
+            return FindByCondition(p => p.Id == id).FirstOrDefault();
         }
         public void CreateUser(User user)
         {
-            throw new NotImplementedException();
+            Create(user);
         }
         public void UpdateUser(string id, User user)
         {
-            throw new NotImplementedException();
+            var temp = this.GetUserById(id);
+            if (temp == null)
+            {
+                throw new Exception("User does not exist");
+            }
+            Update((p => p.Id == id), user);
         }
 
         public void DeleteUser(string id)
         {
-            throw new NotImplementedException();
+            var temp = this.GetUserById(id);
+            if (temp == null)
+            {
+                throw new Exception("User does not exist");
+            }
+            Delete((p => p.Id == id));
         }
     }
 }
