@@ -16,7 +16,7 @@ namespace Sprouty.Repositories
         public RepositoryBase(MongoDbContext context)
         {
             if (context == null)
-                return; // TODO : add logging
+                return;
 
             _context = context;
             _collection = _context.DbSet<T>();
@@ -24,14 +24,27 @@ namespace Sprouty.Repositories
 
         public IQueryable<T> FindAll()
         {
-            // TODO: implement interface functions, see UML
-            throw new NotImplementedException();
+            return _collection.AsQueryable();
         }
 
         public IQueryable<T> FindByCondition(Expression<Func<T, bool>> filter)
         {
-            // TODO: implement interface functions, see UML
-            throw new NotImplementedException();
+            return _collection.AsQueryable().Where(filter);
+        }
+
+        public void Create(T entity)
+        {
+            _collection.InsertOne(entity);
+        }
+
+        public void Update(Expression<Func<T, bool>> filter, T entity)
+        {
+            _collection.FindOneAndReplace(filter, entity);
+        }
+
+        public void Delete(Expression<Func<T, bool>> filter)
+        {
+            _collection.DeleteMany(filter);
         }
     }
 }

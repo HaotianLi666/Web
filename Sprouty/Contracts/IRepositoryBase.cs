@@ -8,7 +8,8 @@ namespace Sprouty.Contracts
     {
         IQueryable<T> FindAll();
         IQueryable<T> FindByCondition(Expression<Func<T, bool>> filter);
-
-        // TODO : add  the rest of the base interface functions, see UML
+        void Create(T entity);
+        void Update(Expression<Func<T, bool>> filter, T entity);
+        void Delete(Expression<Func<T, bool>> filter);
     }
 }

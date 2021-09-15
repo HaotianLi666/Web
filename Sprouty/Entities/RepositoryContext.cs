@@ -20,8 +20,9 @@ namespace Sprouty.Entities
 
         public IMongoCollection<T> DbSet<T>() where T : BaseModel
         {
-            var collection = typeof(T).GetCustomAttribute<TableAttribute>(false).Name;
-            return _database.GetCollection<T>(collection);
+            // fetch the name given to the table attribute of the model and return that specific collection
+            var collection = typeof(T).GetCustomAttribute<TableAttribute>(false).Name; 
+            return _database.GetCollection<T>(collection); 
         }
     }
 }
