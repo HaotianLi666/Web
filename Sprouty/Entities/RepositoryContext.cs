@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace Sprouty.Entities
 {
-    public class RepositoryContext
+    public class RepositoryContext: DbContext
     {
         private IMongoDatabase _database;
         public RepositoryContext(IMongoSettings settings)

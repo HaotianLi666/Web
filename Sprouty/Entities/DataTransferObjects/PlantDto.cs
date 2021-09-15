@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using Sprouty.Entities.Models;
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Sprouty.Entities.DataTransferObjects
