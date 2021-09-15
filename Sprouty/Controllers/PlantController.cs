@@ -1,5 +1,15 @@
+<<<<<<< HEAD
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
+=======
+﻿/* File: PlantController.cs
+ * Authors: Jonathan Wenek, Cameron Carley, Stephanie Cameron
+ * Purpose: Controller for the Plant repository, inherits from ControllerBase
+ * Functions: 
+ *      PlantController(), GetAllPlants(), GetPlantById(), CreatePlant(), UpdatePlant(), DeletePlant() */
+
+using AutoMapper;
+>>>>>>> master
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using Sprouty.Contracts;
@@ -26,7 +36,7 @@ namespace Sprouty.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllUsers()
+        public IActionResult GetAllPlants()
         {
             try
             {
@@ -36,11 +46,11 @@ namespace Sprouty.Controllers
             }
             catch (Exception e)
             {
-                // TODO : add logging
                 return StatusCode(500, "Internal server error");
             }
         }
 
+<<<<<<< HEAD
         // GET: /plant
         /// <summary>
         /// Get collection of plants.
@@ -76,5 +86,30 @@ namespace Sprouty.Controllers
 
 
         // TODO : implement the rest of the controller functions, see UML
+=======
+        [HttpGet("{id:length(24)}", Name = "PlantById")]
+        public IActionResult GetPlantById(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpPost]
+        public IActionResult CreatePlant([FromBody]PlantDto plant)
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpPut("{id:length(24)}")]
+        public IActionResult UpdatePlant(string id, [FromBody]PlantDto plant)
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpDelete("{id:length(24)}")]
+        public IActionResult DeletePlant(string id)
+        {
+            throw new NotImplementedException();
+        }
+>>>>>>> master
     }
 }
