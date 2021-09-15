@@ -7,7 +7,8 @@ namespace Sprouty.Contracts
     {
         IEnumerable<User> GetAll();
         User GetUserById(string id);
-
-        // TODO : add the rest of the interface functions, see UML
+        void CreateUser(User user);
+        void UpdateUser(string id, User user);
+        void DeleteUser(string id);
     }
 }

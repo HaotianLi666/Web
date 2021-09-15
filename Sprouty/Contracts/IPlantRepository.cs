@@ -7,7 +7,8 @@ namespace Sprouty.Contracts
     {
         IEnumerable<Plant> GetAll();
         Plant GetPlantById(string id);
-
-        // TODO : add the rest of the interface functions, see UML
+        void CreatePlant(Plant plant);
+        void UpdatePlant(string id, Plant plant);
+        void DeleteClient(string id);
     }
 }
