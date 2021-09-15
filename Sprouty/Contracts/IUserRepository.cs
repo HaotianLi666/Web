@@ -5,7 +5,7 @@ namespace Sprouty.Contracts
 {
     public interface IUserRepository
     {
-        IEnumerable<User> GetAll();
+        IEnumerable<User> GetAllUsers();
         User GetUserById(string id);
         void CreateUser(User user);
         void UpdateUser(string id, User user);

@@ -5,10 +5,10 @@ namespace Sprouty.Contracts
 {
     public interface IPlantRepository
     {
-        IEnumerable<Plant> GetAll();
+        IEnumerable<Plant> GetAllPlants();
         Plant GetPlantById(string id);
         void CreatePlant(Plant plant);
         void UpdatePlant(string id, Plant plant);
-        void DeleteClient(string id);
+        void DeletePlant(string id);
     }
 }
