@@ -1,4 +1,10 @@
-﻿using AutoMapper;
+﻿/* File: UserController.cs
+ * Authors: Jonathan Wenek, Cameron Carley, Stephanie Cameron
+ * Purpose: Controller for the User repository, inherits from ControllerBase
+ * Functions: 
+ *      UserController(), GetAllUsers(), GetUserById(), CreateUser(), UpdateUser(), DeleteUser() */
+
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using Sprouty.Contracts;
@@ -34,11 +40,32 @@ namespace Sprouty.Controllers
             }
             catch (Exception e)
             {
-                // TODO : add logging
                 return StatusCode(500, "Internal server error");
             }
         }
 
-        // TODO : implement the rest of the controller functions, see UML
+        [HttpGet("{id:length(24)}", Name = "UserById")]
+        public IActionResult GetUserById(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpPost]
+        public IActionResult CreateUser([FromBody] UserDto user)
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpPut("{id:length(24)}")]
+        public IActionResult UpdateUser(string id, [FromBody] UserDto user)
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpDelete("{id:length(24)}")]
+        public IActionResult DeleteUser(string id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

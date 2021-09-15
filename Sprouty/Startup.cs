@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Sprouty.Extensions;
 
 namespace Sprouty
 {
@@ -20,10 +20,17 @@ namespace Sprouty
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.ConfigureCors();
+            services.ConfigureIISIntegration();
+            services.ConfigureRepositoryContext(Configuration);
+            services.ConfigureSerilog(Configuration);
+            services.ConfigureRepositoryWrapper();
             services.AddControllersWithViews();
-            // In production, the Angular files will be served from this directory
+            services.ConfigureAuthorization();
+            services.AddAutoMapper(typeof(Startup));
             services.AddSpaStaticFiles(configuration =>
             {
+                // In production, the Angular files will be served from this directory
                 configuration.RootPath = "ClientApp/dist";
             });
         }
