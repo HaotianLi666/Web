@@ -12,13 +12,24 @@ namespace Sprouty.Repositories
 
         public IEnumerable<User> GetAll()
         {
-            // TODO : implement interface functions, see UML
             throw new NotImplementedException();
         }
 
         public User GetUserById(string id)
         {
-            // TODO : implement interface functions, see UML
+            throw new NotImplementedException();
+        }
+        public void CreateUser(User user)
+        {
+            throw new NotImplementedException();
+        }
+        public void UpdateUser(string id, User user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteUser(string id)
+        {
             throw new NotImplementedException();
         }
     }
