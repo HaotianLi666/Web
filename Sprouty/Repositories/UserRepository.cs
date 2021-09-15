@@ -3,16 +3,17 @@ using Sprouty.Entities;
 using Sprouty.Entities.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Sprouty.Repositories
 {
     public class UserRepository : RepositoryBase<User>, IUserRepository
     {
-        public UserRepository(RepositoryContext context) : base(context) { }
+        public UserRepository(RepositoryContext context):base(context) { }
 
-        public IEnumerable<User> GetAll()
+        public IEnumerable<User> GetAllUsers()
         {
-            throw new NotImplementedException();
+            return FindAll().OrderBy(u=>u.Id).ToList();
         }
 
         public User GetUserById(string id)

@@ -3,34 +3,52 @@ using Sprouty.Entities;
 using Sprouty.Entities.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Sprouty.Repositories
 {
     public class PlantRepository : RepositoryBase<Plant>, IPlantRepository
     {
-        public PlantRepository(MongoDbContext context) : base(context) { }
+        public PlantRepository(RepositoryContext context) : base(context) { }
 
-        public IEnumerable<Plant> GetAll()
+        public IEnumerable<Plant> GetAllPlants()
         {
-            throw new NotImplementedException();
+            return FindAll().OrderBy(p => p.Id).ToList<Plant>();
         }
 
         public Plant GetPlantById(string id)
         {
-            throw new NotImplementedException();
+            return FindByCondition(p => p.Id == id).FirstOrDefault();
         }
+
+        public IEnumerable<Plant> GetPlantsByUserId(Guid userId)
+        {
+            return FindByCondition(p => p.UserId == userId).ToList().Sort((x, y) => DateTime.Compare(x., y.Created));
+        }
+
         public void CreatePlant(Plant plant)
         {
-            throw new NotImplementedException();
+            Create(plant);
         }
 
         public void UpdatePlant(string id, Plant plant)
         {
-            throw new NotImplementedException();
+            var temp = this.GetPlantById(id);
+            if (temp == null)
+            {
+                throw new Exception("Plant does not exist");
+            }
+            Update((p=>p.Id==id),plant);
         }
-        public void DeleteClient(string id)
+        public void DeletePlant(string id)
         {
-            throw new NotImplementedException();
+          
+            var temp = this.GetPlantById(id);
+            if (temp == null)
+            {
+                throw new Exception("Plant does not exist");
+            }
+            Delete((p => p.Id == id));
         }
     }
 }

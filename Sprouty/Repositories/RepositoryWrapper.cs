@@ -36,6 +36,11 @@ namespace Sprouty.Repositories
             }
         }
 
+        public void Save()
+        {
+            _context.SaveChanges();
+        }
+
 
     }
 }
