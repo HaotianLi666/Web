@@ -28,7 +28,7 @@ namespace Sprouty.Controllers
         {
             try
             {
-                var users = _repository.User.GetAll();
+                var users = _repository.User.GetAllUsers();
                 var result = _mapper.Map<IEnumerable<UserDto>>(users);
                 return Ok(result);
             }
