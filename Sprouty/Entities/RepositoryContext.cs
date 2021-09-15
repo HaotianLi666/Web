@@ -1,5 +1,8 @@
-﻿using Sprouty.Entities.Models;
-using Microsoft.EntityFrameworkCore;
+﻿/* File: RepositoryContext.cs
+ * Authors: Jonathan Wenek
+ * Purpose: This class is the single point of contact from the application to MongoDB in the cloud */
+
+using Sprouty.Entities.Models;
 using MongoDB.Driver;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;

@@ -1,4 +1,10 @@
-﻿using Sprouty.Contracts;
+﻿/* File: UserRepository.cs
+ * Authors: Jonathan Wenek, Cameron Carley, Stephanie Cameron
+ * Purpose: Implements the IUserRepository interface
+ * Functions:
+ *      UserRepository(), GetAll(), GetUserById(), CreateUser(), UpdateUser(), DeleteUser() */
+
+using Sprouty.Contracts;
 using Sprouty.Entities;
 using Sprouty.Entities.Models;
 using System;
@@ -6,6 +12,12 @@ using System.Collections.Generic;
 
 namespace Sprouty.Repositories
 {
+    /* Class: UserRepository
+     * Inherits: RepositoryBase<User>
+     * Implements: IUserRepository 
+     * Purpose: 
+     *      To provide the specific implementation of RepositoryBase for type User provided by the interface contract 
+     *      in IUserRepository */
     public class UserRepository : RepositoryBase<User>, IUserRepository
     {
         public UserRepository(RepositoryContext context) : base(context) { }
