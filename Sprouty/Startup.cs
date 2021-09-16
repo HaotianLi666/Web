@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using Sprouty.Extensions;
 
 namespace Sprouty
@@ -33,6 +34,22 @@ namespace Sprouty
                 // In production, the Angular files will be served from this directory
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Sprouty API",
+                    Description = "API used in ENG/ENL4001",
+                    Contact = new OpenApiContact
+                    {
+                        Name="Cameron Carley",
+                        Email ="carl0151@algonquinlive.com",
+                    }
+                });
+
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +58,8 @@ namespace Sprouty
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SPROUTY_API v1"));
             }
             else
             {
