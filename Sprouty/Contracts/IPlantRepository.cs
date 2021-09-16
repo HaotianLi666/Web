@@ -3,6 +3,7 @@
  * Purpose: Public interface of the plant repository
  * Functions: GetAll(), GetPlantById(), CreatePlant(), UpdatePlant(), DeletePlant() */
 using Sprouty.Entities.Models;
+using System;
 using System.Collections.Generic;
 
 namespace Sprouty.Contracts
@@ -14,7 +15,11 @@ namespace Sprouty.Contracts
         IEnumerable<Plant> GetAllPlants();
         Plant GetPlantById(string id);
         void CreatePlant(Plant plant);
-        void UpdatePlant(string id, Plant plant);
+        void UpdatePlantWithId(string id, Plant plant);
         void DeletePlant(string id);
+
+        void UpdatePlantWithoutId(Plant plant);
+
+        IEnumerable<Plant> GetPlantsByUserId(Guid userId);
     }
 }
