@@ -6,6 +6,7 @@ using Sprouty.Entities.Models;
 using MongoDB.Driver;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
+using Microsoft.EntityFrameworkCore;
 
 namespace Sprouty.Entities
 {
@@ -27,5 +28,8 @@ namespace Sprouty.Entities
             var collection = typeof(T).GetCustomAttribute<TableAttribute>(false).Name; 
             return _database.GetCollection<T>(collection); 
         }
+
     }
+
+     
 }
