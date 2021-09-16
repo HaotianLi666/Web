@@ -4,6 +4,7 @@
  * Functions:
  *      UserRepository(), GetAll(), GetUserById(), CreateUser(), UpdateUser(), DeleteUser() */
 
+using Microsoft.EntityFrameworkCore;
 using Sprouty.Contracts;
 using Sprouty.Entities;
 using Sprouty.Entities.Models;
@@ -32,6 +33,11 @@ namespace Sprouty.Repositories
         {
             return FindByCondition(p => p.Id == id).FirstOrDefault();
         }
+
+        public User GetUserWithPlants(string id)
+        {
+            return FindByCondition(p => p.Id == id).Include(u=>u.UserPlants).FirstOrDefault();
+        }
         public void CreateUser(User user)
         {
             Create(user);
@@ -46,6 +52,19 @@ namespace Sprouty.Repositories
             Update((p => p.Id == id), user);
         }
 
+
+        public void DeleteAllPlantsOfUser(string id)
+        {
+            var temp = FindByCondition(p => p.UserId == id).ToList();
+
+            foreach (var obj in temp) {
+                Delete(p=>obj.UserId == p.UserId);
+            }
+          
+        }
+
+
+
         public void DeleteUser(string id)
         {
             var temp = this.GetUserById(id);
@@ -54,6 +73,7 @@ namespace Sprouty.Repositories
                 throw new Exception("User does not exist");
             }
             Delete((p => p.Id == id));
+         
         }
     }
 }

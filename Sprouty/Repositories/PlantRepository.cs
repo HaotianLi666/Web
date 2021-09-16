@@ -43,7 +43,7 @@ namespace Sprouty.Repositories
             Create(plant);
         }
 
-        public void UpdatePlant(string id, Plant plant)
+        public void UpdatePlantWithId(string id, Plant plant)
         {
             var temp = this.GetPlantById(id);
             if (temp == null)
@@ -52,6 +52,17 @@ namespace Sprouty.Repositories
             }
             Update((p=>p.Id==id),plant);
         }
+
+        public void UpdatePlantWithoutId(Plant plant)
+        {
+            var temp = this.GetPlantById(plant.Id);
+            if (temp == null)
+            {
+                throw new Exception("Plant does not exist");
+            }
+            Update((p => p.Id == plant.Id), plant);
+        }
+
         public void DeletePlant(string id)
         {
           
