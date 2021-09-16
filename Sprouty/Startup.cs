@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
+using Sprouty.Extensions;
 
 namespace Sprouty
 {
@@ -20,11 +21,34 @@ namespace Sprouty
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.ConfigureCors();
+            services.ConfigureIISIntegration();
+            services.ConfigureRepositoryContext(Configuration);
+            services.ConfigureSerilog(Configuration);
+            services.ConfigureRepositoryWrapper();
             services.AddControllersWithViews();
-            // In production, the Angular files will be served from this directory
+            services.ConfigureAuthorization();
+            services.AddAutoMapper(typeof(Startup));
             services.AddSpaStaticFiles(configuration =>
             {
+                // In production, the Angular files will be served from this directory
                 configuration.RootPath = "ClientApp/dist";
+            });
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Sprouty API",
+                    Description = "API used in ENG/ENL4001",
+                    Contact = new OpenApiContact
+                    {
+                        Name="Cameron Carley",
+                        Email ="carl0151@algonquinlive.com",
+                    }
+                });
+
             });
         }
 
@@ -34,6 +58,8 @@ namespace Sprouty
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SPROUTY_API v1"));
             }
             else
             {
