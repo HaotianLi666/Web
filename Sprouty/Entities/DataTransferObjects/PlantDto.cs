@@ -4,34 +4,21 @@
 
 using MongoDB.Bson.Serialization.Attributes;
 using Sprouty.Entities.Models;
-<<<<<<< HEAD
+
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
-=======
->>>>>>> master
+
 
 namespace Sprouty.Entities.DataTransferObjects
 {
     public class PlantDto : BaseModel
     {
-<<<<<<< HEAD
-        string GivenName;
 
-        int WaterSchedule;
 
+        [BsonElement("lastWatered")]
         DateTime LastWatered;
-
+        [BsonElement("whenPlanted")]
         DateTime WhenPlanted;
-
-        string Location;
-
-        string CommonName;
-
-        string ScientificName;
-
-        int Status; //Alive or Dead? , Boolean?
-
-=======
         [BsonElement("givenName")]
         public string GivenName { get; set; }
 
@@ -49,6 +36,12 @@ namespace Sprouty.Entities.DataTransferObjects
 
         [BsonElement("status")]
         public int Status { get; set; }
->>>>>>> master
+
+
+        [BsonElement("userId")]
+        public Guid UserId { get; set; }
+        [BsonElement("user")]
+        public User User { get; set; }
+
     }
 }

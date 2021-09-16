@@ -36,8 +36,9 @@ namespace Sprouty.Entities.Models
         [BsonElement("status")]
         int Status { get; set; }//Alive or Dead? , Boolean?
 
-
+        [BsonElement("userId")]
         public Guid UserId { get; set; }
+        [BsonElement("user")]
         public User User{get; set;}
     }
 }
