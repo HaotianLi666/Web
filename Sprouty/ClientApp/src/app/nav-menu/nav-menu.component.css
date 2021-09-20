@@ -1,3 +1,7 @@
+.intro-header {
+  height: unset !important;
+}
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;
