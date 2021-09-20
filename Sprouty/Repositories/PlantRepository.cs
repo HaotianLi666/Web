@@ -9,6 +9,7 @@ using Sprouty.Entities;
 using Sprouty.Entities.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Sprouty.Repositories
 {
@@ -22,27 +23,55 @@ namespace Sprouty.Repositories
     {
         public PlantRepository(RepositoryContext context) : base(context) { }
 
-        public IEnumerable<Plant> GetAll()
+        public IEnumerable<Plant> GetAllPlants()
         {
-            throw new NotImplementedException();
+            return FindAll().OrderBy(p => p.Id).ToList<Plant>();
         }
 
         public Plant GetPlantById(string id)
         {
-            throw new NotImplementedException();
-        }
-        public void CreatePlant(Plant plant)
-        {
-            throw new NotImplementedException();
+            return FindByCondition(p => p.Id == id).FirstOrDefault();
         }
 
-        public void UpdatePlant(string id, Plant plant)
+        public IEnumerable<Plant> GetPlantsByUserId(Guid userId)
         {
-            throw new NotImplementedException();
+            return FindByCondition(p => p.UserId == userId).ToList();
         }
-        public void DeleteClient(string id)
+
+        public void CreatePlant(Plant plant)
         {
-            throw new NotImplementedException();
+            Create(plant);
+        }
+
+        public void UpdatePlantWithId(string id, Plant plant)
+        {
+            var temp = this.GetPlantById(id);
+            if (temp == null)
+            {
+                throw new Exception("Plant does not exist");
+            }
+            Update((p=>p.Id==id),plant);
+        }
+
+        public void UpdatePlantWithoutId(Plant plant)
+        {
+            var temp = this.GetPlantById(plant.Id);
+            if (temp == null)
+            {
+                throw new Exception("Plant does not exist");
+            }
+            Update((p => p.Id == plant.Id), plant);
+        }
+
+        public void DeletePlant(string id)
+        {
+          
+            var temp = this.GetPlantById(id);
+            if (temp == null)
+            {
+                throw new Exception("Plant does not exist");
+            }
+            Delete((p => p.Id == id));
         }
     }
 }

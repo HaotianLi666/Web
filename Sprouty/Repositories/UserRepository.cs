@@ -4,11 +4,13 @@
  * Functions:
  *      UserRepository(), GetAll(), GetUserById(), CreateUser(), UpdateUser(), DeleteUser() */
 
+using Microsoft.EntityFrameworkCore;
 using Sprouty.Contracts;
 using Sprouty.Entities;
 using Sprouty.Entities.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Sprouty.Repositories
 {
@@ -20,29 +22,58 @@ namespace Sprouty.Repositories
      *      in IUserRepository */
     public class UserRepository : RepositoryBase<User>, IUserRepository
     {
-        public UserRepository(RepositoryContext context) : base(context) { }
+        public UserRepository(RepositoryContext context):base(context) { }
 
-        public IEnumerable<User> GetAll()
+        public IEnumerable<User> GetAllUsers()
         {
-            throw new NotImplementedException();
+            return FindAll().OrderBy(u=>u.Id).ToList<User>();
         }
 
         public User GetUserById(string id)
         {
-            throw new NotImplementedException();
+            return FindByCondition(p => p.Id == id).FirstOrDefault();
+        }
+
+        public User GetUserWithPlants(string id)
+        {
+            return FindByCondition(p => p.Id == id).Include(u=>u.UserPlants).FirstOrDefault();
         }
         public void CreateUser(User user)
         {
-            throw new NotImplementedException();
+            Create(user);
         }
         public void UpdateUser(string id, User user)
         {
-            throw new NotImplementedException();
+            var temp = this.GetUserById(id);
+            if (temp == null)
+            {
+                throw new Exception("User does not exist");
+            }
+            Update((p => p.Id == id), user);
         }
+
+
+        public void DeleteAllPlantsOfUser(string id)
+        {
+            var temp = FindByCondition(p => p.UserId == id).ToList();
+
+            foreach (var obj in temp) {
+                Delete(p=>obj.UserId == p.UserId);
+            }
+          
+        }
+
+
 
         public void DeleteUser(string id)
         {
-            throw new NotImplementedException();
+            var temp = this.GetUserById(id);
+            if (temp == null)
+            {
+                throw new Exception("User does not exist");
+            }
+            Delete((p => p.Id == id));
+         
         }
     }
 }

@@ -27,5 +27,11 @@ namespace Sprouty.Entities.Models
 
         [BsonElement("lastLoggedIn")]
         public DateTime LastLoggedIn { get; set; }
+         [BsonElement("accountCreated")]
+        DateTime AccountCreated
+        {
+            get { return AccountCreated; }
+            set { throw new NotSupportedException("Initialized in Constructor"); } //Perhaps to early to implement this?
+        }
     }
 }

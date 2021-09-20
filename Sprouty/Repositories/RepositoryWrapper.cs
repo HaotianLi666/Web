@@ -48,5 +48,12 @@ namespace Sprouty.Repositories
                 return _plant;
             }
         }
+
+        public void Save()
+        {
+            _context.SaveChanges();
+        }
+
+
     }
 }
