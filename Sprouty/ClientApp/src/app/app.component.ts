@@ -8,5 +8,3 @@ export class AppComponent {
   title = 'app';
   //myimage: string = "assets/img/bg5.jpg";
 }
-
-

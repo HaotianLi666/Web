@@ -3,7 +3,7 @@
 }
 
 .intro-2 {
-  background: url("https://mdbootstrap.com/img/Photos/Others/img%20(42).jpg")no-repeat center center;
+  background: url("https://i.pinimg.com/originals/a0/7e/bd/a07ebd32b489dcf01905f35d0f73b306.jpg")no-repeat center center;
   background-size: cover;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .card {
-  background-color: rgba(229, 228, 255, 0.2);
+  background-color: rgba(204, 204, 211, 0.2);
 }
 
 .md-form .prefix {
@@ -43,7 +43,7 @@
 }
 
 .md-form label {
-  color: #ffffff;
+  color: #8d3333;
 }
 
 h6 {
