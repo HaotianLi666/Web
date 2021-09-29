@@ -37,7 +37,7 @@ import { MyPlantsPageComponent } from './my-plants-page/my-plants-page.component
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
       { path: 'create-account', component: CreateAccountComponent },
-      { path: 'counter', component: MyPlantsPageComponent },
+      { path: 'my-plants-page', component: MyPlantsPageComponent },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
     ])
