@@ -12,6 +12,8 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
+import { CreateAccountComponent } from './create-account/create-account.component';
+import { MyPlantsPageComponent } from './my-plants-page/my-plants-page.component';
 //Hello!
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { LoginComponent } from './login/login.component';
     CounterComponent,
     FetchDataComponent,
     FooterComponent,
+    CreateAccountComponent,
+    MyPlantsPageComponent,
   
   ],
   imports: [
@@ -32,6 +36,8 @@ import { LoginComponent } from './login/login.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
+      { path: 'create-account', component: CreateAccountComponent },
+      { path: 'counter', component: MyPlantsPageComponent },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
     ])
