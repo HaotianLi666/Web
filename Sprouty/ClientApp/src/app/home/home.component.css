@@ -3,8 +3,10 @@
 }
 
 .intro-2 {
-  background: url("https://i.pinimg.com/originals/a0/7e/bd/a07ebd32b489dcf01905f35d0f73b306.jpg")no-repeat center center;
+  filter: brightness(110%);
+  background: url("https://cdn1.epicgames.com/ue/product/Screenshot/Wall_PlantsV3_07-1920x1080-dd1e4fcdad2c117173cceb3e3fae81b8.jpg?resize=1&w=1920")no-repeat center center;
   background-size: cover;
+  background-position: 50% -22%;
 }
 
 .view {
@@ -57,4 +59,8 @@ h6 {
   .full-height header .view {
     height: 1040px;
   }
+}
+
+.a {
+  margin-right: 10px;
 }
