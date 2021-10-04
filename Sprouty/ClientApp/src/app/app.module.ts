@@ -8,20 +8,22 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { FooterComponent } from './footer/footer.component';
-import { BackgroundComponent } from './background/background.component';
+import { RegisterComponent } from './register/register.component';
+import { MyplantsComponent } from './myplants/myplants.component';
+import { SigninComponent } from './signin/signin.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
     FooterComponent,
-    BackgroundComponent
+    RegisterComponent,
+    MyplantsComponent,
+    SigninComponent,
+    DashboardComponent
   ],
   imports: [
     MDBBootstrapModule.forRoot(),
@@ -30,8 +32,10 @@ import { BackgroundComponent } from './background/background.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: 'signin', component: SigninComponent },
+      { path: 'myplants', component: MyplantsComponent },
+      { path: 'dashboard', component: DashboardComponent },
     ])
   ],
   providers: [],
