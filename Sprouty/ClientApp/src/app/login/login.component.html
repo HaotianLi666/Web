@@ -1,0 +1,23 @@
+<h1>Log In</h1>
+<p>This is a simple example of Sprouty login page</p>
+
+<form #userLogin="ngForm" (ngSubmit)="onSubmit(userLogin.value)">
+  <label>Username  </label>
+  <input class="form-control" type="text" name="Username " ngModel>
+  <br />
+  <label>Email  </label>
+  <input class="form-control" type="email" name="Email " ngModel>
+  <br />
+  <label>Password </label>
+  <input class="form-control" type="password" name="Password " ngModel>
+  <br />
+  <br />
+  <button class="btn btn-primary" type="submit">Submit</button>
+  <button class="btn inlinebtn-primary" type="submit" href="https://localhost:44319/">Cancel</button>
+  <br />
+  <a href="http://localhost:4200/fetch-data"> Forgot Password?</a>
+
+
+
+</form>
+
