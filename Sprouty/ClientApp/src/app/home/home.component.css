@@ -1,0 +1,66 @@
+.intro-header {
+  height: unset !important;
+}
+
+.intro-2 {
+  filter: brightness(110%);
+  background: url("https://cdn1.epicgames.com/ue/product/Screenshot/Wall_PlantsV3_07-1920x1080-dd1e4fcdad2c117173cceb3e3fae81b8.jpg?resize=1&w=1920")no-repeat center center;
+  background-size: cover;
+  background-position: 50% -22%;
+}
+
+.view {
+  height: 100vh !important;
+}
+
+.top-nav-collapse {
+  background-color: #3f51b5 !important;
+}
+
+.navbar:not(.top-nav-collapse) {
+  background: transparent !important;
+}
+
+@media (max-width: 768px) {
+  .navbar:not(.top-nav-collapse) {
+    background: #3f51b5 !important;
+  }
+}
+
+.rgba-gradient .full-bg-img {
+  background: linear-gradient(45deg, rgba(83, 125, 210, 0.4), rgba(178, 30, 123, 0.4) 100%);
+}
+
+.full-bg-img {
+  height: 100%;
+}
+
+.card {
+  background-color: rgba(204, 204, 211, 0.2);
+}
+
+.md-form .prefix {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+.md-form label {
+  color: #8d3333;
+}
+
+h6 {
+  line-height: 1.7;
+}
+
+@media (max-width: 740px) {
+  .full-height,
+  .full-height body,
+  .full-height header,
+  .full-height header .view {
+    height: 1040px;
+  }
+}
+
+.a {
+  margin-right: 10px;
+}
