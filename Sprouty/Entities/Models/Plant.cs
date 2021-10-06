@@ -18,26 +18,34 @@ namespace Sprouty.Entities.Models
     {
         [BsonElement("givenName")] 
         string GivenName{ get; set; }
+
         [BsonElement("waterSchedule")]
         int WaterSchedule{ get; set; }
+
         [BsonElement("lastWatered")]
         DateTime LastWatered{ get; set; }
+
         [BsonElement("whenPlanted")]
         DateTime WhenPlanted{ get; set; }
+
         [BsonElement("whenToWaterNext")]
         DateTime WhenToWaterNext => LastWatered.AddDays(WaterSchedule * 7);
+        
         [BsonElement("location")]
         string Location{ get; set; }
+        
         [BsonElement("commonName")] 
         string CommonName{ get; set; }
         
         [BsonElement("scientificName")]
         string ScientificName{ get; set; }
+        
         [BsonElement("status")]
-        int Status { get; set; }//Alive or Dead? , Boolean?
+        int Status { get; set; } //Alive or Dead? , Boolean?
 
         [BsonElement("userId")]
         public Guid UserId { get; set; }
+        
         [BsonElement("user")]
         public User User{get; set;}
     }

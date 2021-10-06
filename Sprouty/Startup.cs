@@ -70,6 +70,7 @@ namespace Sprouty
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseCors("CorsPolicy");
             if (!env.IsDevelopment())
             {
                 app.UseSpaStaticFiles();

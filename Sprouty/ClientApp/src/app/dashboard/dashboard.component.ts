@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models';
-import { AuthenticationService, UserService } from '../services/index';
+import { AuthenticationService } from '../services/index';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html'
+  selector: 'app-dash',
+  templateUrl: './dashboard.component.html'
 
 })
-export class HomeComponent implements OnInit {
+export class DashboardComponent implements OnInit {
   currentUser: User;
 
   constructor(private authService: AuthenticationService) {

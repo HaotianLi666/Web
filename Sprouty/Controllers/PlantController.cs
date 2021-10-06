@@ -1,15 +1,11 @@
-<<<<<<< HEAD
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
-=======
-﻿/* File: PlantController.cs
- * Authors: Jonathan Wenek, Cameron Carley, Stephanie Cameron
- * Purpose: Controller for the Plant repository, inherits from ControllerBase
- * Functions: 
- *      PlantController(), GetAllPlants(), GetPlantById(), CreatePlant(), UpdatePlant(), DeletePlant() */
+/* File: PlantController.cs
+* Authors: Jonathan Wenek, Cameron Carley, Stephanie Cameron
+* Purpose: Controller for the Plant repository, inherits from ControllerBase
+* Functions: 
+*      PlantController(), GetAllPlants(), GetPlantById(), CreatePlant(), UpdatePlant(), DeletePlant() */
 
 using AutoMapper;
->>>>>>> master
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using Sprouty.Contracts;
@@ -50,7 +46,7 @@ namespace Sprouty.Controllers
             }
         }
 
-<<<<<<< HEAD
+
         // GET: /plant
         /// <summary>
         /// Get collection of plants.
@@ -86,7 +82,6 @@ namespace Sprouty.Controllers
 
 
         // TODO : implement the rest of the controller functions, see UML
-=======
         [HttpGet("{id:length(24)}", Name = "PlantById")]
         public IActionResult GetPlantById(string id)
         {
@@ -110,6 +105,5 @@ namespace Sprouty.Controllers
         {
             throw new NotImplementedException();
         }
->>>>>>> master
     }
 }

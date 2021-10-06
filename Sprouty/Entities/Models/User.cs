@@ -19,19 +19,23 @@ namespace Sprouty.Entities.Models
         [BsonElement("emailAddress")]
         public string EmailAddress { get; set; }
 
-        [BsonElement("settings")]
-        public UserSettings Settings { get; set; }
+        [BsonElement("password")]
+        public string Password { get; set; }
+
+        //[BsonElement("settings")]
+        //public UserSettings Settings { get; set; }
 
         [BsonElement("userPlants")]
         public ICollection<Plant> UserPlants { get; set; }
 
-        [BsonElement("lastLoggedIn")]
-        public DateTime LastLoggedIn { get; set; }
-         [BsonElement("accountCreated")]
-        DateTime AccountCreated
-        {
-            get { return AccountCreated; }
-            set { throw new NotSupportedException("Initialized in Constructor"); } //Perhaps to early to implement this?
-        }
+        //[BsonElement("lastLoggedIn")]
+        //public DateTime LastLoggedIn { get; set; }
+        
+        // [BsonElement("accountCreated")]
+        //DateTime AccountCreated
+        //{
+        //    get { return AccountCreated; }
+        //    set { throw new NotSupportedException("Initialized in Constructor"); } //Perhaps to early to implement this?
+        //}
     }
 }
