@@ -1,19 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { HttpClientModule } from '@angular/common/http';
 import { RepositoryService } from './services/repository.service';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
-import { BackgroundComponent } from './background/background.component';
+import { RegisterComponent } from './register/register.component';
+import { MyplantsComponent } from './myplants/myplants.component';
+import { SigninComponent } from './signin/signin.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { AlertComponent } from './components/alert';
-import { AppRoutingModule } from './app.routing';
 import { LoginComponent } from './login';
-import { RegisterComponent } from './register';
-import { DashboardComponent } from './dashboard';
+import { AppRoutingModule } from './app.routing';
+import { RouterModule } from '@angular/router';
+
 
 @NgModule({
   declarations: [
@@ -22,18 +25,33 @@ import { DashboardComponent } from './dashboard';
     HomeComponent,
     NavMenuComponent,
     FooterComponent,
-    BackgroundComponent,
     AlertComponent,
     LoginComponent,
     RegisterComponent,
+    FooterComponent,
+    RegisterComponent,
+    MyplantsComponent,
+    SigninComponent,
+    DashboardComponent
+
   ],
   imports: [
     ReactiveFormsModule,
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    MDBBootstrapModule.forRoot(),
     HttpClientModule,
     FormsModule,
+    RouterModule.forRoot([
+      { path: '', component: HomeComponent, pathMatch: 'full' },
+
+      { path: 'register', component: RegisterComponent },
+      { path: 'signin', component: SigninComponent },
+      { path: 'myplants', component: MyplantsComponent },
+      { path: 'dashboard', component: DashboardComponent },
+
+    ])
   ],
   providers: [
     RepositoryService
