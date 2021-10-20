@@ -6,7 +6,9 @@
     "baseUrl": "src",
     "paths": { "@/*": [ "app/*" ]},
     "outDir": "../out-tsc/app",
-    "types": []
+    "types": [ 
+      "node" 
+    ],
   },
   "exclude": [
     "src/test.ts",

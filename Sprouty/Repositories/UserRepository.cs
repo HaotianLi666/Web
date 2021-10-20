@@ -4,13 +4,13 @@
  * Functions:
  *      UserRepository(), GetAll(), GetUserById(), CreateUser(), UpdateUser(), DeleteUser() */
 
-using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using System.Linq;
 using Sprouty.Contracts;
 using Sprouty.Entities;
 using Sprouty.Entities.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Sprouty.Helpers;
+using Sprouty.Services;
 
 namespace Sprouty.Repositories
 {
@@ -22,11 +22,29 @@ namespace Sprouty.Repositories
      *      in IUserRepository */
     public class UserRepository : RepositoryBase<User>, IUserRepository
     {
-        public UserRepository(RepositoryContext context):base(context) { }
+        private readonly AppSettings _appsettings;
+        private readonly IUserService _userService;
 
-        public IEnumerable<User> GetAllUsers()
+        public UserRepository(IUserService userService, IOptions<AppSettings> appSettings, RepositoryContext context):base(context) 
         {
-            return FindAll().OrderBy(u=>u.Id).ToList<User>();
+            _appsettings = appSettings.Value;
+            _userService = userService;
+        }
+
+        //public UserRepository(RepositoryContext context) : base(context) { }
+
+        public AuthenticateResponse Authenticate(AuthenticateRequest model)
+        {
+            var user = FindByCondition(p => p.UserId == model.UserId).FirstOrDefault();
+            if (user == null)
+                return null;
+
+            var hashed = _userService.HashPassword(model.Password, user.Salt);
+            if (user.Password != hashed)
+                return null;
+
+            var token = _userService.GenerateJwtToken(user);
+            return new AuthenticateResponse(user, token);
         }
 
         public User GetUserById(string id)
@@ -34,46 +52,24 @@ namespace Sprouty.Repositories
             return FindByCondition(p => p.Id == id).FirstOrDefault();
         }
 
-        public User GetUserWithPlants(string id)
+        public User GetUserByEmail(string email)
         {
-            return FindByCondition(p => p.Id == id).Include(u=>u.UserPlants).FirstOrDefault();
+            return FindByCondition(p => p.EmailAddress == email).FirstOrDefault();
         }
+
         public void CreateUser(User user)
         {
             Create(user);
         }
+
         public void UpdateUser(string id, User user)
         {
-            var temp = this.GetUserById(id);
-            if (temp == null)
-            {
-                throw new Exception("User does not exist");
-            }
             Update((p => p.Id == id), user);
         }
 
-
-        public void DeleteAllPlantsOfUser(string id)
-        {
-            var temp = FindByCondition(p => p.UserId == id).ToList();
-
-            foreach (var obj in temp) {
-                Delete(p=>obj.UserId == p.UserId);
-            }
-          
-        }
-
-
-
         public void DeleteUser(string id)
         {
-            var temp = this.GetUserById(id);
-            if (temp == null)
-            {
-                throw new Exception("User does not exist");
-            }
             Delete((p => p.Id == id));
-         
         }
     }
 }

@@ -3,8 +3,6 @@
  * Purpose: Public interface of the user repository
  * Functions: GetAll(), GetUserById(), CreateUser(), UpdateUser(), DeleteUser() */
 using Sprouty.Entities.Models;
-using System;
-using System.Collections.Generic;
 
 namespace Sprouty.Contracts
 {
@@ -12,10 +10,9 @@ namespace Sprouty.Contracts
      * Purpose: Defines the functions which must be implemented by any class which implements this interface */
     public interface IUserRepository
     {
-        IEnumerable<User> GetAllUsers();
-
-        User GetUserWithPlants(string id);
+        AuthenticateResponse Authenticate(AuthenticateRequest model);
         User GetUserById(string id);
+        User GetUserByEmail(string email);
         void CreateUser(User user);
         void UpdateUser(string id, User user);
         void DeleteUser(string id);

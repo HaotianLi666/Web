@@ -4,13 +4,11 @@
 
 using MongoDB.Bson.Serialization.Attributes;
 using Sprouty.Entities.Models;
-using System.Collections.Generic;
 
 /** DTO's are files used JUST for data transfer. This is what will be mapped to the Database. */
 namespace Sprouty.Entities.DataTransferObjects
 {
-    [BsonIgnoreExtraElements]
-    public class UserDto : BaseModel
+    public class NewUserDto : BaseModel
     {
         [BsonElement("userId")]
         public string UserId { get; set; }
@@ -18,7 +16,8 @@ namespace Sprouty.Entities.DataTransferObjects
         [BsonElement("emailAddress")]
         public string EmailAddress { get; set; }
 
-        [BsonElement("plants")]
-        public ICollection<Plant> Plants { get; set; }
+        [BsonElement("password")]
+        public string password { get; set; }
+
     }
 }

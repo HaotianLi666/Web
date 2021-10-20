@@ -2,8 +2,8 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
-import { AlertService, AuthenticationService } from '../services';
+import { AlertService, AuthenticationService, RepositoryService } from '../services';
+import { environment as env } from './../../environments/environment';
 
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
+        private repository: RepositoryService,
         private alertService: AlertService
     ) {
         // redirect to home if already logged in
@@ -27,8 +28,7 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         this.loginForm = this.formBuilder.group({
-            username: ['', Validators.required],
-            email: ['', Validators.required],
+            userId: ['', Validators.required],
             password: ['', Validators.required]
         });
 
@@ -53,15 +53,13 @@ export class LoginComponent implements OnInit {
         }
 
         this.loading = true;
-        this.authenticationService.login(this.f.username.value, this.f.password.value)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.router.navigate([this.returnUrl]);
+        this.repository.post(env.urls['login'], this.loginForm.value).subscribe(response => {
+                    this.alertService.success('Login successful', true);
+                    this.router.navigate(['/dashboard']);
                 },
                 error => {
                     this.alertService.error(error);
                     this.loading = false;
-                });
+        });
     }
 }

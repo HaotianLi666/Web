@@ -15,6 +15,8 @@ using Sprouty.Contracts;
 using Sprouty.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Sprouty.Services;
+using Microsoft.OpenApi.Models;
 
 namespace Sprouty.Extensions 
 {
@@ -98,6 +100,15 @@ namespace Sprouty.Extensions
             services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
         }
 
+        /* Function: ConfigureRepositoryWrapper()
+         * Authors: Jonathan Wenek
+         * Purpose: To add the UserService interface as a scoped service to be used for depenancy injection
+         * Parameters: services<IServiceCollection>, specifies the contract for a collection of service descriptors */
+        public static void ConfigureUserService(this IServiceCollection services)
+        {
+            services.AddScoped<IUserService, UserService>();
+        }
+
         /* Function: ConfigureAuthorization
          * Authors: Jonathan Wenek
          * Purpose: To define the configuration options for the Authorization service
@@ -116,6 +127,24 @@ namespace Sprouty.Extensions
                             .RequireAuthenticatedUser()
                             .Build()
                 );
+            });
+        }
+
+        public static void ConfigureSwaggerGen(this IServiceCollection services)
+        {
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Sprouty API",
+                    Description = "API used in ENG/ENL4001",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Cameron Carley",
+                        Email = "carl0151@algonquinlive.com",
+                    }
+                });
             });
         }
     }

@@ -5,6 +5,6 @@ export interface User {
     userId: string;
     emailAddress: string;
     password: string;
-    useraPlants: Array<UserPlant>;
+    userPlants: Array<UserPlant>;
     token: string;
 }

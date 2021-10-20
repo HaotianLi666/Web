@@ -7,8 +7,6 @@ import { RepositoryService } from './services/repository.service';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { FooterComponent } from './footer/footer.component';
 import { BackgroundComponent } from './background/background.component';
 import { AlertComponent } from './components/alert';
@@ -23,8 +21,6 @@ import { DashboardComponent } from './dashboard';
     AppComponent,
     HomeComponent,
     NavMenuComponent,
-    CounterComponent,
-    FetchDataComponent,
     FooterComponent,
     BackgroundComponent,
     AlertComponent,

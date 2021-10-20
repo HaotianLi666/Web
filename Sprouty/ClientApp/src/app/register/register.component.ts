@@ -1,9 +1,12 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
-
-import { AlertService, UserService, AuthenticationService } from '../services';
+import { 
+    AlertService, 
+    RepositoryService, 
+    AuthenticationService 
+} from '../services';
+import { environment as env } from '../../environments/environment';
 
 @Component({ templateUrl: 'register.component.html' })
 export class RegisterComponent implements OnInit {
@@ -15,7 +18,7 @@ export class RegisterComponent implements OnInit {
         private formBuilder: FormBuilder,
         private router: Router,
         private authenticationService: AuthenticationService,
-        private userService: UserService,
+        private repository: RepositoryService,
         private alertService: AlertService
     ) {
         // redirect to home if already logged in
@@ -26,15 +29,19 @@ export class RegisterComponent implements OnInit {
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
-            firstName: ['', Validators.required],
-            lastName: ['', Validators.required],
-            username: ['', Validators.required],
-            password: ['', [Validators.required, Validators.minLength(6)]]
+            emailAddress: [ '', Validators.required ],
+            userId:       [ '', Validators.required ],
+            password:     [ '', [ 
+                Validators.required, 
+                Validators.minLength(8) 
+            ]]
         });
     }
 
     // convenience getter for easy access to form fields
-    get f() { return this.registerForm.controls; }
+    get f() { 
+        return this.registerForm.controls; 
+    }
 
     onSubmit() {
         this.submitted = true;
@@ -46,19 +53,17 @@ export class RegisterComponent implements OnInit {
         if (this.registerForm.invalid) {
             return;
         }
-
+        
         this.loading = true;
-        this.userService.register(this.registerForm.value)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.alertService.success('Registration successful', true);
-                    this.router.navigate(['/login']);
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                }
-            );
+
+        // register the user in the database
+        this.repository.post(env.urls['register'], this.registerForm.value).subscribe(response => {
+                this.alertService.success('Registration successful', true);
+                this.router.navigate(['/login']);
+            },
+            error => {
+                this.alertService.error(error);
+                this.loading = false;
+        });
     }
 }

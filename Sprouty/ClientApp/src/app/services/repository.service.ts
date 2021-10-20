@@ -10,22 +10,22 @@ export class RepositoryService {
 
   constructor(private http: HttpClient) { }
 
-  public getData(route: string) {
+  public get(route: string) {
     return this.http.get(this.createCompleteRoute(route, this.address));
   }
 
-  public create(route: string, body) {
+  public post(route: string, body) {
     return this.http.post(this.createCompleteRoute(route, this.address), body, this.generateHeaders());
   }
 
-  public update(route: string, body) {
+  public put(route: string, body) {
     return this.http.put(this.createCompleteRoute(route, this.address), body, this.generateHeaders());
   }
 
   public delete(route: string) {
     return this.http.delete(this.createCompleteRoute(route, this.address));
   }
-
+  
   public createCompleteRoute(route: string, address: string) {
     return `${address}/${route}`;
   }

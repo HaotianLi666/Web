@@ -9,10 +9,12 @@ import { AuthenticationService } from '../services/index';
 })
 export class DashboardComponent implements OnInit {
   currentUser: User;
-
+  
   constructor(private authService: AuthenticationService) {
     this.currentUser = this.authService.currentUserValue;
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+   
+  }
 }

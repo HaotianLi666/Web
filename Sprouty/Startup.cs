@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 using Sprouty.Extensions;
+using Sprouty.Helpers;
 
 namespace Sprouty
 {
@@ -21,12 +21,14 @@ namespace Sprouty
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             services.ConfigureCors();
+            services.AddControllersWithViews();
             services.ConfigureIISIntegration();
+            services.ConfigureUserService();
             services.ConfigureRepositoryContext(Configuration);
             services.ConfigureSerilog(Configuration);
             services.ConfigureRepositoryWrapper();
-            services.AddControllersWithViews();
             services.ConfigureAuthorization();
             services.AddAutoMapper(typeof(Startup));
             services.AddSpaStaticFiles(configuration =>
@@ -34,22 +36,7 @@ namespace Sprouty
                 // In production, the Angular files will be served from this directory
                 configuration.RootPath = "ClientApp/dist";
             });
-
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Version = "v1",
-                    Title = "Sprouty API",
-                    Description = "API used in ENG/ENL4001",
-                    Contact = new OpenApiContact
-                    {
-                        Name="Cameron Carley",
-                        Email ="carl0151@algonquinlive.com",
-                    }
-                });
-
-            });
+            services.ConfigureSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

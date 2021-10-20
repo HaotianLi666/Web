@@ -9,44 +9,36 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Sprouty.Entities.Models
 {
-    /*
-     TODO: Implement function calls
-    */
     [Table("Plants")] // name of the collection these documents are stored in
     [BsonIgnoreExtraElements]
     public class Plant : BaseModel
     {
-        [BsonElement("givenName")] 
-        string GivenName{ get; set; }
+        [BsonElement("info")]
+        string Info { get; set; }
 
-        [BsonElement("waterSchedule")]
-        int WaterSchedule{ get; set; }
-
-        [BsonElement("lastWatered")]
-        DateTime LastWatered{ get; set; }
-
-        [BsonElement("whenPlanted")]
-        DateTime WhenPlanted{ get; set; }
-
-        [BsonElement("whenToWaterNext")]
-        DateTime WhenToWaterNext => LastWatered.AddDays(WaterSchedule * 7);
-        
-        [BsonElement("location")]
-        string Location{ get; set; }
-        
         [BsonElement("commonName")] 
         string CommonName{ get; set; }
         
         [BsonElement("scientificName")]
         string ScientificName{ get; set; }
-        
-        [BsonElement("status")]
-        int Status { get; set; } //Alive or Dead? , Boolean?
+    }
 
-        [BsonElement("userId")]
-        public Guid UserId { get; set; }
-        
-        [BsonElement("user")]
-        public User User{get; set;}
+    [BsonIgnoreExtraElements]
+    public class PlantDetails: Plant
+    {
+        [BsonElement("givenName")]
+        string GivenName { get; set; }
+
+        [BsonElement("waterSchedule")]
+        int WaterSchedule { get; set; }
+
+        [BsonElement("lastWatered")]
+        DateTime LastWatered { get; set; }
+
+        [BsonElement("whenPlanted")]
+        DateTime WhenPlanted { get; set; }
+
+        [BsonElement("location")]
+        string Location { get; set; }
     }
 }
