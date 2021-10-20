@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AlertService, AuthenticationService, RepositoryService } from '../services';
 import { environment as env } from './../../environments/environment';
+import { User } from 'oidc-client';
 
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
@@ -45,7 +46,7 @@ export class LoginComponent implements OnInit {
         this.submitted = true;
 
         // reset alerts on submit
-        this.alertService.clear();
+        // this.alertService.clear();
 
         // stop here if form is invalid
         if (this.loginForm.invalid) {
@@ -53,13 +54,17 @@ export class LoginComponent implements OnInit {
         }
 
         this.loading = true;
-        this.repository.post(env.urls['login'], this.loginForm.value).subscribe(response => {
-                    this.alertService.success('Login successful', true);
-                    this.router.navigate(['/dashboard']);
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
+        this.authenticationService.login(this.loginForm.value.userId, this.loginForm.value.password)
+            .subscribe(response => {
+                let temp = response as User;
+                console.log(JSON.stringify(temp));
+                // this.alertService.success('Login successful', true);
+                this.router.navigate(['/']);
+            },
+            error => {
+                // this.alertService.error(error);
+                console.log(error);
+                this.loading = false;
         });
     }
 }
