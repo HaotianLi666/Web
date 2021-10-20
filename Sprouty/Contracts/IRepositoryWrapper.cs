@@ -8,9 +8,5 @@ namespace Sprouty.Contracts
     {
         IPlantRepository Plant { get; }
         IUserRepository User { get; }
-
-
     }
-
-
 }

@@ -1,34 +1,33 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
-
+import { RepositoryService } from './services/repository.service';
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-
-
-
-
-
-//Hello!
-=======
 import { FooterComponent } from './footer/footer.component';
 import { RegisterComponent } from './register/register.component';
 import { MyplantsComponent } from './myplants/myplants.component';
 import { SigninComponent } from './signin/signin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AlertComponent } from './components/alert';
+import { LoginComponent } from './login';
+import { AppRoutingModule } from './app.routing';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
   declarations: [
+    DashboardComponent,
     AppComponent,
-    NavMenuComponent,
     HomeComponent,
-
+    NavMenuComponent,
+    FooterComponent,
+    AlertComponent,
+    LoginComponent,
+    RegisterComponent,
     FooterComponent,
     RegisterComponent,
     MyplantsComponent,
@@ -37,6 +36,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
   ],
   imports: [
+    ReactiveFormsModule,
+    AppRoutingModule,
     MDBBootstrapModule.forRoot(),
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     MDBBootstrapModule.forRoot(),
@@ -52,7 +53,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
     ])
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    RepositoryService
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

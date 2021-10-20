@@ -14,8 +14,11 @@ namespace Sprouty.Contracts
     {
         IEnumerable<Plant> GetAllPlants();
         Plant GetPlantById(string id);
+
         void CreatePlant(Plant plant);
+
         void UpdatePlantWithId(string id, Plant plant);
+
         void DeletePlant(string id);
 
         void UpdatePlantWithoutId(Plant plant);

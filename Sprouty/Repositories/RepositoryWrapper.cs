@@ -3,8 +3,11 @@
  * Purpose: 
  *      Generic wrapper class which exposes the IUserRepository and IPlantRepository interface classes to their 
  *      respective controller classes */
+using Microsoft.Extensions.Options;
 using Sprouty.Contracts;
 using Sprouty.Entities;
+using Sprouty.Helpers;
+using Sprouty.Services;
 
 namespace Sprouty.Repositories
 {
@@ -21,10 +24,14 @@ namespace Sprouty.Repositories
         private RepositoryContext _context;
         private IUserRepository _user;
         private IPlantRepository _plant;
+        private IUserService _userService;
+        private IOptions<AppSettings> _settings;
 
-        public RepositoryWrapper(RepositoryContext context)
+        public RepositoryWrapper(RepositoryContext context, IUserService userService, IOptions<AppSettings> settings)
         {
             _context = context;
+            _userService = userService;
+            _settings = settings;
         }
 
         public IUserRepository User
@@ -32,7 +39,7 @@ namespace Sprouty.Repositories
             get
             {
                 if (_user == null)
-                    _user = new UserRepository(_context);
+                    _user = new UserRepository(_userService, _settings, _context);
 
                 return _user;
             }
@@ -53,7 +60,5 @@ namespace Sprouty.Repositories
         {
             _context.SaveChanges();
         }
-
-
     }
 }

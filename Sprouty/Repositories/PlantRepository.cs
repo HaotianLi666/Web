@@ -33,11 +33,6 @@ namespace Sprouty.Repositories
             return FindByCondition(p => p.Id == id).FirstOrDefault();
         }
 
-        public IEnumerable<Plant> GetPlantsByUserId(Guid userId)
-        {
-            return FindByCondition(p => p.UserId == userId).ToList();
-        }
-
         public void CreatePlant(Plant plant)
         {
             Create(plant);
@@ -72,6 +67,11 @@ namespace Sprouty.Repositories
                 throw new Exception("Plant does not exist");
             }
             Delete((p => p.Id == id));
+        }
+
+        public IEnumerable<Plant> GetPlantsByUserId(Guid userId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

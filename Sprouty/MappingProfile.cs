@@ -17,6 +17,7 @@ namespace Sprouty
         {
             CreateMap<User, UserDto>();
             CreateMap<UserDto, User>();
+            CreateMap<NewUserDto, User>();
             CreateMap<Plant, PlantDto>();
             CreateMap<PlantDto, Plant>();
         }
