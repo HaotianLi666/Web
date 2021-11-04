@@ -11,7 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RegisterComponent } from './register/register.component';
 import { MyplantsComponent } from './myplants/myplants.component';
 import { SigninComponent } from './signin/signin.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './dashboard/dashboard.component'
 import { AlertComponent } from './components/alert';
 import { LoginComponent } from './login';
 import { AppRoutingModule } from './app.routing';
