@@ -1,4 +1,21 @@
-﻿<h2>Register</h2>
+﻿<!--Intro Section-->
+<section class="view intro-2">
+    <div class="full-bg-img mask rgba-gradient">
+      <div class="container flex-center">
+        <div class="d-flex align-items-center content-height w-100">
+          <div class="row flex-center pt-5 mt-3 w-100">
+            <div class="col-md-6 col-xl-5 offset-xl-1">
+              <!--Form-->
+              <mdb-card class="wow fadeInRight" data-wow-delay="0.3s">
+                <mdb-card-body>
+                  <!--Header-->
+                  <div class="text-center">
+                    <h3 class="white-text">
+                      <mdb-icon fas icon="user" class="text-black"></mdb-icon> Register:
+                    </h3>
+                    <hr class="hr-light">
+                  </div>
+<!--Body-->
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="userId">Username</label>
@@ -30,3 +47,29 @@
         <a routerLink="/login" class="btn btn-link">Cancel</a>
     </div>
 </form>
+<!--Body-->
+
+<div class="text-center mt-4">
+
+    <hr class="hr-light mb-3 mt-4">
+    <div class="inline-ul text-center d-flex justify-content-center">
+      <a class="p-2 m-2 tw-ic">
+        <mdb-icon fab icon="twitter" class="text-black"></mdb-icon>
+      </a>
+      <a class="p-2 m-2 li-ic">
+        <mdb-icon fab icon="linkedin-in" class="text-black-50"></mdb-icon>
+      </a>
+      <a class="p-2 m-2 ins-ic">
+        <mdb-icon fab icon="instagram" class="text-black-50"></mdb-icon>
+      </a>
+    </div>
+  </div>
+</mdb-card-body>
+</mdb-card>
+<!--/.Form-->
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
