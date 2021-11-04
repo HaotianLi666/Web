@@ -6,6 +6,7 @@ import { RegisterComponent } from './components/register';
 import { DashboardComponent } from './components/dashboard'
 import { AuthGuard } from './helpers';
 import { MyplantsComponent } from './components/myplants/myplants.component';
+import { AddPlantsComponent } from './components/myplants/add-plants/add-plants.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,10 @@ const routes: Routes = [
 	{
 		path: 'myplants',
 		component: MyplantsComponent
+	},
+	{
+		path: 'add-plants',
+		component: AddPlantsComponent
 	},
     { 
 		path: '**', 

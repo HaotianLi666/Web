@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-plants.component.css']
 })
 export class AddPlantsComponent implements OnInit {
-
+  title: string = 'Add plant'
   constructor() { }
 
   ngOnInit() {
   }
-
+  toggleAddPlant(){
+    console.log('toggle');
+  }
 }
