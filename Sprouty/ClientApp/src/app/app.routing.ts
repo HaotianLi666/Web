@@ -1,10 +1,12 @@
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from './home';
-import { LoginComponent } from './login';
-import { RegisterComponent } from './register';
-import { DashboardComponent } from './dashboard';
+import { HomeComponent } from './components/home';
+import { LoginComponent } from './components/login';
+import { RegisterComponent } from './components/register';
+import { DashboardComponent } from './components/dashboard'
 import { AuthGuard } from './helpers';
+import { MyplantsComponent } from './components/myplants/myplants.component';
+
 
 const routes: Routes = [
     { 
@@ -21,8 +23,12 @@ const routes: Routes = [
 	},
 	{
 		path: 'dashboard',
-		component: DashboardComponent,
+		component: DashboardComponent
 		//canActivate: [AuthGuard]
+	},
+	{
+		path: 'myplants',
+		component: MyplantsComponent
 	},
     { 
 		path: '**', 

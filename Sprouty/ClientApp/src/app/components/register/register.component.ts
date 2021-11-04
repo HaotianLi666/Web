@@ -5,8 +5,8 @@ import {
     AlertService, 
     RepositoryService, 
     AuthenticationService 
-} from '../services';
-import { environment as env } from '../../environments/environment';
+} from '../../services';
+import { environment as env } from '../../../environments/environment';
 
 @Component({ templateUrl: 'register.component.html' })
 export class RegisterComponent implements OnInit {

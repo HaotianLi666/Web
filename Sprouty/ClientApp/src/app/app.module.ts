@@ -6,16 +6,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { RepositoryService } from './services/repository.service';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { FooterComponent } from './footer/footer.component';
-import { RegisterComponent } from './register/register.component';
-import { MyplantsComponent } from './myplants/myplants.component';
-import { SigninComponent } from './signin/signin.component';
-import { DashboardComponent } from './dashboard/dashboard.component'
+import { HomeComponent } from './components/home/home.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { RegisterComponent } from './components/register/register.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component'
 import { AlertComponent } from './components/alert';
-import { LoginComponent } from './login';
+import { LoginComponent } from './components/login';
 import { AppRoutingModule } from './app.routing';
 import { RouterModule } from '@angular/router';
+import { MyplantsComponent } from './components/myplants/myplants.component';
+import { AddPlantsComponent } from './components/myplants/add-plants/add-plants.component';
 
 
 @NgModule({
@@ -30,9 +30,9 @@ import { RouterModule } from '@angular/router';
     RegisterComponent,
     FooterComponent,
     RegisterComponent,
+    DashboardComponent,
     MyplantsComponent,
-    SigninComponent,
-    DashboardComponent
+    AddPlantsComponent
 
   ],
   imports: [
@@ -45,9 +45,8 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-
       { path: 'register', component: RegisterComponent },
-      { path: 'signin', component: SigninComponent },
+      { path: 'login', component: LoginComponent },
       { path: 'myplants', component: MyplantsComponent },
       { path: 'dashboard', component: DashboardComponent },
 
