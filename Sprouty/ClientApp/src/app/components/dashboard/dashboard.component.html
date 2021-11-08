@@ -4,40 +4,29 @@
 <section class="view intro-2">
   <div class="full-bg-img mask rgba-gradient">
     <div class="container flex-center">
-      
-        
-      
-     
-        <!-- Card -->    
-          <div *ngFor="let obj of Users" >
-            <div class="d-flex flex-row bd-highlight mb-3" >
-            <div class="card" *ngFor="let user of obj">
-          <!-- Custom class for applying ripple -->
-          <a href="#!" class="example-class">
-            <img src="{{user.img_url}}"
-                 class="card-img-top"
-                 alt="..." />
-          </a>   
-          <h5 class="card-title">{{user.name}}</h5>
+
+      <!-- Card -->
+      <div *ngFor="let obj of Users">
+        <div class="d-flex flex-row bd-highlight mb-3">
+          <div class="card" *ngFor="let user of obj">
+            <!-- Custom class for applying ripple -->
+            <a href="#!" class="example-class">
+              <img src="{{user.img_url}}" class="card-img-top" alt="..." />
+            </a>
+            <h5 class="card-title">{{user.name}}</h5>
             <a href="{{user.view_url}}" class="btn btn-primary">{{user.view}}</a>
           </div>
-        
-          </div>
+
         </div>
-        
-        
+      </div>
+      <!-- Card -->
+      
+      <div class="row flex-center pt-5 mt-3 w-50">
+        <div class="col-md-6 text-center text-md-left mb-5">
+          <div class="white-text">
 
-
-    
-  
-
-        <!-- Card -->
-        <div class="row flex-center pt-5 mt-3 w-50">
-          <div class="col-md-6 text-center text-md-left mb-5">
-            <div class="white-text">
-              
-              <!-- Sidebar -->
-              <!-- <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+            <!-- Sidebar -->
+            <!-- <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
                 <div class="position-sticky">
                   <div class="list-group list-group-flush mx-3 mt-4">
                     <a href="#"
@@ -62,13 +51,13 @@
                   </div>
                 </div>
               </nav> -->
-              <!-- Sidebar -->
+            <!-- Sidebar -->
 
-             
-            </div>
+
           </div>
         </div>
-      
+      </div>
+
     </div>
   </div>
 </section>
