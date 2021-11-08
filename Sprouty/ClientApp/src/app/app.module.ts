@@ -6,6 +6,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
+
+
 //Components
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
@@ -17,9 +19,11 @@ import { AlertComponent } from './components/alert';
 import { LoginComponent } from './components/login/login.component';
 import { MyplantsComponent } from './components/myplants/myplants.component';
 import { AddPlantsComponent } from './components/myplants/add-plants/add-plants.component';
-import { ButtonComponent } from './components/myplants/button/button.component';
+
 //Services
 import { RepositoryService } from './services/repository.service';
+import { UserprofileComponent } from './components/userprofile/userprofile.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 @NgModule({
@@ -37,7 +41,8 @@ import { RepositoryService } from './services/repository.service';
     DashboardComponent,
     MyplantsComponent,
     AddPlantsComponent,
-    ButtonComponent
+    UserprofileComponent,
+    LogoutComponent
 
   ],
   imports: [
@@ -55,7 +60,10 @@ import { RepositoryService } from './services/repository.service';
       { path: 'myplants', component: MyplantsComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'add-plants', component: AddPlantsComponent},
-    ])
+      { path: 'userprofile', component: UserprofileComponent},
+      { path: 'logout', component: LogoutComponent},
+    ]),
+    
   ],
   providers: [
     RepositoryService
