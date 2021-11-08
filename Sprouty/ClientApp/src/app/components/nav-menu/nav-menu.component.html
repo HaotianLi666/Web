@@ -1,7 +1,7 @@
 <header class="intro-header">
-  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+  <nav class="navbar navbar-expand bg-light border-bottom mb-3">
     <div class="container">
-      <a class="navbar-brand" [routerLink]="['/']">Sprouty</a>
+      <a class="navbar-brand text-success" [routerLink]="['/']">Sprouty</a>
       <button class="navbar-toggler"
               type="button"
               data-toggle="collapse"
@@ -17,20 +17,25 @@
           <li class="nav-item"
               [routerLinkActive]="['link-active']"
               [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
+            <a class="nav-link text-success" [routerLink]="['/']">Home</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
 
-            <a class="nav-link text-dark" [routerLink]="['/register']">Register</a>
+            <a class="nav-link text-success" [routerLink]="['/register']">Register</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/myplants']">My Plants</a>
+            <a class="nav-link text-success" [routerLink]="['/myplants']">My Plants</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/dashboard']">Dashboard</a>
+            <a class="nav-link text-success" [routerLink]="['/dashboard']">Dashboard</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark " [routerLink]="['/login']"><b class="fas fa-user fa-lg me-3 fa-fw"></b></a>
+            <a class="nav-link text-success" [routerLink]="['/login']"><b class="fas fa-user fa-lg me-3 fa-fw"></b></a>
+            <ul>
+              <li class="nav-link text-light" [routerLink]="['/userprofile']">UserProfile</li>
+              <li class="nav-link text-light" [routerLink]="['/login']">Login</li>
+              <li class="nav-link text-light" [routerLink]="['/logout']">Logout</li>
+            </ul>
           </li>
         </ul>
       </div>
